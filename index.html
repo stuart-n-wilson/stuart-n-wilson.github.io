@@ -409,6 +409,12 @@
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      border: 2px solid var(--navy-mid);
+      box-shadow: 0 4px 24px rgba(47,82,148,0.12);
+    }
+    .proj-card.featured:hover {
+      border-color: var(--navy-light);
+      box-shadow: 0 8px 36px rgba(47,82,148,0.2);
     }
     .proj-card.featured .proj-img {
       aspect-ratio: unset;
@@ -416,6 +422,22 @@
       border-right: 1px solid var(--rule);
       border-bottom: none;
       border-radius: 0;
+    }
+
+    /* "Featured Project" pill shown above the project title */
+    .featured-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--navy-mid);
+      border-radius: 4px;
+      padding: 3px 9px;
+      width: fit-content;
     }
 
     /* Image / GIF slot */
@@ -896,6 +918,7 @@ complex concepts clearly to non-technical audiences.
 
           <div class="proj-body">
             <!-- 💡 Edit category, title, description, tags, and links -->
+            <span class="featured-label"><i class="fas fa-star"></i> Featured Project</span>
             <p class="proj-category">Simulation · Deployment · LLM Integration</p>
             <h3 class="proj-title">F1 Qualifying Simulator</h3>
             <p class="proj-desc">
