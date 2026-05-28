@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stuart Wilson — Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #181714;
+  --ink-mid: #52504b;
+  --ink-light: #8a8880;
+  --rule: #e4e1db;
+  --bg: #f9f8f5;
+  --surface: #ffffff;
+  --navy: #152535;
+  --navy-mid: #1e3a52;
+  --gold: #c07c2a;
+  --gold-light: #fdf3e7;
+  --green: #2a7a4b;
+  --tag-bg: #eef2f7;
+  --tag-color: #1e3a52;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── HEADER BANNER ── */
+.banner {
+  background: var(--navy);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 3rem;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.banner-left {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+
+.banner-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.banner-pills {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.banner-pill {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.banner-pill::before {
+  content: '·';
+  margin: 0 0.55rem;
+  color: rgba(255,255,255,0.25);
+}
+
+.banner-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.banner-nav a {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+  text-transform: uppercase;
+}
+.banner-nav a:hover { color: #fff; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 5rem 3rem 5.5rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  right: -80px; bottom: -80px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  right: 60px; bottom: 60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+
+.hero-photo {
+  flex-shrink: 0;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-photo-placeholder {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.hero-text { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.hero-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 3.2rem;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.hero-bio {
+  font-size: 0.97rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  max-width: 500px;
+  margin-bottom: 1.75rem;
+}
+
+.hero-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+}
+.hero-btn.primary {
+  background: var(--gold);
+  color: #fff;
+}
+.hero-btn.primary:hover { background: #a86822; }
+.hero-btn.secondary {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.hero-btn.secondary:hover {
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+}
+
+/* ── OPEN TO WORK STRIP ── */
+.status-strip {
+  background: #162e1f;
+  border-top: 1px solid #1f4a2c;
+  border-bottom: 1px solid #1f4a2c;
+  padding: 0.6rem 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #4caf7d;
+  animation: pulse 2.2s infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+.status-strip span {
+  font-size: 0.78rem;
+  color: #6fcf97;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+/* ── PAGE BODY ── */
+.page { max-width: 1080px; margin: 0 auto; padding: 4rem 3rem; }
+
+/* Section headings */
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+.sec-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.sec-rule { flex: 1; height: 1px; background: var(--rule); }
+
+/* ── ABOUT (skills + education row) ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+}
+
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+}
+
+.about-card-title {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 1rem;
+}
+
+.skill-group { margin-bottom: 1rem; }
+.skill-group:last-child { margin-bottom: 0; }
+.skill-group-name {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ink-mid);
+  margin-bottom: 0.4rem;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.skill-tag {
+  font-size: 0.71rem;
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  border-radius: 4px;
+  padding: 3px 9px;
+  font-weight: 400;
+}
+
+.edu-list { display: flex; flex-direction: column; gap: 1.1rem; }
+.edu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.edu-row:last-child { border-bottom: none; padding-bottom: 0; }
+.edu-deg {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+.edu-inst {
+  font-size: 0.76rem;
+  color: var(--ink-mid);
+}
+.edu-badge {
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 1rem;
+  margin-top: 2px;
+}
+.badge-green { background: #eaf5ee; color: #256b40; border: 1px solid #b8ddc6; }
+.badge-amber { background: #fdf5e6; color: #8a5e0a; border: 1px solid #e8d088; }
+
+/* ── PROJECTS ── */
+.projects-section { margin-bottom: 4rem; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.proj-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.proj-card:hover {
+  border-color: #b8cfe0;
+  box-shadow: 0 6px 28px rgba(21,37,53,0.09);
+  transform: translateY(-3px);
+}
+
+.proj-card.featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.proj-card.featured .proj-img { border-radius: 0; border-right: 1px solid var(--rule); border-bottom: none; }
+
+.proj-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #1a2f42 0%, #0e1c28 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+.proj-img img, .proj-img video, .proj-img gif {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.proj-img-placeholder {
+  text-align: center;
+  color: rgba(255,255,255,0.2);
+  font-size: 0.72rem;
+  line-height: 1.7;
+  padding: 1rem;
+}
+.proj-img-icon { font-size: 2.2rem; margin-bottom: 0.4rem; opacity: 0.4; }
+
+.proj-body {
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.proj-category {
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.proj-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.proj-desc {
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.proj-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  background: var(--gold-light);
+  color: var(--gold);
+  border: 1px solid #eacfa0;
+  border-radius: 4px;
+  padding: 3px 9px;
+  width: fit-content;
+}
+
+.proj-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  margin-top: auto;
+  border-top: 1px solid var(--rule);
+}
+
+.proj-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.proj-tag {
+  font-size: 0.68rem;
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  border-radius: 3px;
+  padding: 2px 7px;
+}
+
+.proj-links { display: flex; gap: 0.75rem; flex-shrink: 0; margin-left: 0.75rem; }
+.proj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--navy-mid);
+  padding: 4px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.proj-link:hover { border-color: var(--navy-mid); background: var(--tag-bg); }
+.proj-link.live { color: var(--gold); border-color: #eacfa0; }
+.proj-link.live:hover { background: var(--gold-light); }
+
+.ongoing-tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  background: #f0ebff;
+  color: #6440c0;
+  border: 1px solid #cfc0f0;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+/* ── EXPERIENCE ── */
+.exp-section { margin-bottom: 4rem; }
+.exp-list { display: flex; flex-direction: column; gap: 0; }
+.exp-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.exp-item:first-child { padding-top: 0; }
+.exp-item:last-child { border-bottom: none; }
+.exp-date { font-size: 0.76rem; color: var(--ink-light); padding-top: 3px; line-height: 1.5; }
+.exp-role { font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 0.15rem; }
+.exp-org { font-size: 0.8rem; color: var(--navy-mid); font-weight: 500; margin-bottom: 0.5rem; }
+.exp-detail { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.7; }
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  padding: 2rem 3rem;
+  font-size: 0.75rem;
+}
+.site-footer a { color: rgba(255,255,255,0.6); }
+.site-footer a:hover { color: #fff; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 820px) {
+  .banner { padding: 0 1.5rem; }
+  .banner-pills { display: none; }
+  .hero { flex-direction: column; gap: 2rem; padding: 3rem 1.5rem; }
+  .hero-name { font-size: 2.2rem; }
+  .page { padding: 2.5rem 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .proj-card.featured { grid-column: 1; display: flex; flex-direction: column; }
+  .proj-card.featured .proj-img { border-right: none; border-bottom: 1px solid var(--rule); }
+  .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
+  .status-strip { padding: 0.6rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<header class="banner">
+  <div class="banner-left">
+    <span class="banner-name">Stuart Wilson</span>
+    <nav class="banner-pills">
+      <span class="banner-pill">Data Scientist</span>
+      <span class="banner-pill">Python</span>
+      <span class="banner-pill">SQL</span>
+      <span class="banner-pill">Machine Learning</span>
+      <span class="banner-pill">Sheffield, UK</span>
+    </nav>
+  </div>
+  <nav class="banner-nav">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo" id="heroPhoto">
+    <!-- To add your photo, replace this div's contents with:
+         <img src="your-photo.jpg" alt="Stuart Wilson"> -->
+    <div class="hero-photo-placeholder">Your<br>photo<br>here</div>
+  </div>
+  <div class="hero-text">
+    <p class="hero-eyebrow">Data Scientist · Sheffield, UK</p>
+    <h1 class="hero-name">Stuart Wilson</h1>
+    <p class="hero-bio">MSc Data Science student (expected Distinction, 2026) with a First-Class BSc in Mathematics. I build end-to-end machine learning pipelines — from exploratory analysis through to deployment — and communicate findings clearly to technical and non-technical audiences alike.</p>
+    <div class="hero-links">
+      <a class="hero-btn primary" href="https://github.com/stuart-n-wilson" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a class="hero-btn secondary" href="https://www.linkedin.com/in/stuart-n-wilson/" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="hero-btn secondary" href="mailto:your@email.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS STRIP -->
+<div class="status-strip">
+  <div class="status-dot"></div>
+  <span>Open to entry-level Data Science roles</span>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="page">
+
+  <!-- ABOUT / SKILLS + EDUCATION -->
+  <section id="about" style="margin-bottom:4rem;">
+    <div class="sec-header reveal">
+      <h2 class="sec-title">About</h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="about-grid">
+      <!-- Skills card -->
+      <div class="about-card reveal">
+        <p class="about-card-title">Technical Skills</p>
+        <div class="skill-group">
+          <p class="skill-group-name">Languages</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">R</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-name">ML / AI</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Gradient Boosting</span>
+            <span class="skill-tag">Random Forest</span>
+            <span class="skill-tag">Time Series</span>
+            <span class="skill-tag">Clustering</span>
+            <span class="skill-tag">NLP / LLMs</span>
+            <span class="skill-tag">Monte Carlo</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-name">Libraries & Tools</p>
+          <div class="skill-tags">
+            <span class="skill-tag">scikit-learn</span>
+            <span class="skill-tag">XGBoost</span>
+            <span class="skill-tag">LightGBM</span>
+            <span class="skill-tag">pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Streamlit</span>
+            <span class="skill-tag">Databricks</span>
+            <span class="skill-tag">KNIME</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education card -->
+      <div class="about-card reveal">
+        <p class="about-card-title">Education</p>
+        <div class="edu-list">
+          <div class="edu-row">
+            <div>
+              <p class="edu-deg">MSc Data Science</p>
+              <p class="edu-inst">University of Sheffield · 2025–2026</p>
+            </div>
+            <span class="edu-badge badge-green">Exp. Distinction</span>
+          </div>
+          <div class="edu-row">
+            <div>
+              <p class="edu-deg">BSc Mathematics</p>
+              <p class="edu-inst">The Open University · 2021–2024</p>
+            </div>
+            <span class="edu-badge badge-green">First Class</span>
+          </div>
+          <div class="edu-row">
+            <div>
+              <p class="edu-deg">PGCE Mathematics</p>
+              <p class="edu-inst">University of Sheffield · 2024–2025</p>
+            </div>
+            <span class="edu-badge badge-green">QTS</span>
+          </div>
+          <div class="edu-row">
+            <div>
+              <p class="edu-deg">Azure AI Fundamentals</p>
+              <p class="edu-inst">Microsoft · AI-900</p>
+            </div>
+            <span class="edu-badge badge-amber">In Progress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects-section">
+    <div class="sec-header reveal">
+      <h2 class="sec-title">Projects</h2>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- F1 — featured, full width -->
+      <div class="proj-card featured reveal">
+        <div class="proj-img">
+          <!-- Replace with: <img src="f1-preview.gif" alt="F1 Simulator preview"> -->
+          <div class="proj-img-placeholder">
+            <div class="proj-img-icon">🏎️</div>
+            Add a screenshot or GIF here<br><span style="font-size:0.65rem;opacity:0.6;">proj-img → img src="f1-preview.gif"</span>
+          </div>
+        </div>
+        <div class="proj-body">
+          <p class="proj-category">Simulation · Deployment · LLM</p>
+          <p class="proj-title">F1 Qualifying Simulator</p>
+          <p class="proj-desc">Monte Carlo simulation engine producing a full driver position probability matrix and probabilistically optimised qualifying results. Deployed as an interactive Streamlit app with an integrated LLM chat interface for interpreting results.</p>
+          <div class="proj-footer">
+            <div class="proj-tags">
+              <span class="proj-tag">Python</span>
+              <span class="proj-tag">Monte Carlo</span>
+              <span class="proj-tag">Streamlit</span>
+              <span class="proj-tag">LLM</span>
+            </div>
+            <div class="proj-links">
+              <a class="proj-link" href="https://github.com/stuart-n-wilson/F1-Qualifying-Monte-Carlo-Simulator" target="_blank">GitHub</a>
+              <a class="proj-link live" href="https://f1-qualifying-monte-carlo-simulator.streamlit.app/" target="_blank">↗ Live App</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Airline -->
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <div class="proj-img-placeholder">
+            <div class="proj-img-icon">✈️</div>
+            Add a screenshot here<br><span style="font-size:0.65rem;opacity:0.6;">img src="airline-preview.png"</span>
+          </div>
+        </div>
+        <div class="proj-body">
+          <p class="proj-category">Classification · Feature Engineering</p>
+          <p class="proj-title">Airline Passenger Satisfaction</p>
+          <p class="proj-desc">End-to-end ML pipeline in KNIME — EDA through to a tuned Random Forest classifier. Identified key satisfaction drivers and surfaced service quality gaps between flight classes.</p>
+          <span class="proj-stat">91% Accuracy · 0.97 AUC</span>
+          <div class="proj-footer">
+            <div class="proj-tags">
+              <span class="proj-tag">KNIME</span>
+              <span class="proj-tag">Random Forest</span>
+              <span class="proj-tag">Decision Tree</span>
+            </div>
+            <div class="proj-links">
+              <a class="proj-link" href="https://github.com/stuart-n-wilson/Airline-passenger-satisfaction" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- House Price -->
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <div class="proj-img-placeholder">
+            <div class="proj-img-icon">🏠</div>
+            Add a screenshot here<br><span style="font-size:0.65rem;opacity:0.6;">img src="house-preview.png"</span>
+          </div>
+        </div>
+        <div class="proj-body">
+          <p class="proj-category">Regression · Kaggle Competition</p>
+          <p class="proj-title">House Price Prediction</p>
+          <p class="proj-desc">Gradient boosting pipeline with substantial feature engineering. Compared LightGBM and XGBoost with Optuna hyperparameter optimisation across multiple tuning strategies.</p>
+          <span class="proj-stat">Top 23% · RMSE 0.1265</span>
+          <div class="proj-footer">
+            <div class="proj-tags">
+              <span class="proj-tag">Python</span>
+              <span class="proj-tag">XGBoost</span>
+              <span class="proj-tag">LightGBM</span>
+              <span class="proj-tag">Optuna</span>
+            </div>
+            <div class="proj-links">
+              <a class="proj-link" href="https://github.com/stuart-n-wilson/House-price-prediction" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Song Clustering -->
+      <div class="proj-card reveal">
+        <div class="proj-img">
+          <div class="proj-img-placeholder">
+            <div class="proj-img-icon">🎵</div>
+            Add a screenshot here<br><span style="font-size:0.65rem;opacity:0.6;">img src="clustering-preview.png"</span>
+          </div>
+        </div>
+        <div class="proj-body">
+          <p class="proj-category">Unsupervised Learning · NLP</p>
+          <p class="proj-title">Song Feature Clustering</p>
+          <p class="proj-desc">K-means with PCA applied to 50+ years of Billboard chart data, revealing two distinct acoustic profiles. NLP techniques (tokenisation, lemmatisation) uncovered lyrical trends across eras.</p>
+          <div class="proj-footer">
+            <div class="proj-tags">
+              <span class="proj-tag">R</span>
+              <span class="proj-tag">k-means</span>
+              <span class="proj-tag">PCA</span>
+              <span class="proj-tag">NLP</span>
+            </div>
+            <div class="proj-links">
+              <a class="proj-link" href="https://github.com/stuart-n-wilson/Song-feature-clustering" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dissertation -->
+      <div class="proj-card reveal" style="grid-column: 1 / -1; background: #faf8ff; border-color: #d4c8f0;">
+        <div class="proj-body" style="flex-direction: row; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+          <div style="flex:1; min-width: 260px; display:flex; flex-direction:column; gap:0.5rem;">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <p class="proj-category" style="color:#6440c0;">MSc Dissertation · In Progress</p>
+              <span class="ongoing-tag">2026</span>
+            </div>
+            <p class="proj-title">Time Series Imputation Benchmarking</p>
+            <p class="proj-desc">A benchmarking framework analysing bias-variance trade-offs in forecasting tasks arising from different imputation methods — Kalman smoothing, ARIMA, and LSTM — under synthetic missingness mechanisms (MCAR, MAR, MNAR).</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;min-width:180px;">
+            <div class="proj-tags">
+              <span class="proj-tag" style="background:#ede8ff;color:#5a3a9a;">Python</span>
+              <span class="proj-tag" style="background:#ede8ff;color:#5a3a9a;">ARIMA</span>
+              <span class="proj-tag" style="background:#ede8ff;color:#5a3a9a;">LSTM</span>
+              <span class="proj-tag" style="background:#ede8ff;color:#5a3a9a;">Kalman</span>
+            </div>
+            <a class="proj-link" href="https://github.com/stuart-n-wilson" target="_blank" style="width:fit-content;border-color:#cfc0f0;color:#6440c0;">GitHub (add link)</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="exp-section">
+    <div class="sec-header reveal">
+      <h2 class="sec-title">Experience</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <p class="exp-date">May 2025 – Present</p>
+        <div>
+          <p class="exp-role">Maths Tutor</p>
+          <p class="exp-org">Tutorful / Private · Sheffield & Remote</p>
+          <p class="exp-detail">One-to-one A Level, GCSE and KS3 tuition — translating complex quantitative concepts into tailored, accessible explanations. Consistently strong student outcomes across exam series.</p>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <p class="exp-date">May 2022 – Aug 2024</p>
+        <div>
+          <p class="exp-role">Sales Assistant</p>
+          <p class="exp-org">Sports Direct · Grantham, UK</p>
+          <p class="exp-detail">Customer-facing role requiring clear communication and teamwork. Awarded <em>Frasers Champion</em> in recognition of customer service excellence while managing the footwear department.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  Stuart Wilson · Data Scientist · Sheffield, UK &nbsp;·&nbsp;
+  <a href="https://github.com/stuart-n-wilson" target="_blank">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/stuart-n-wilson/" target="_blank">LinkedIn</a>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
