@@ -1,1 +1,7 @@
-# stuart-n-wilson.github.io
+# Stuart Wilson
+
+Data Scientist
+
+---
+
+Hi!
