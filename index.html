@@ -578,6 +578,7 @@
     .exp-role   { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.15rem; }
     .exp-org    { font-size: 0.8rem;  font-weight: 500; color: var(--navy-mid); margin-bottom: 0.45rem; }
     .exp-detail { font-size: 0.82rem; font-weight: 300; color: var(--ink-mid); line-height: 1.75; }
+    .exp-detail + .exp-detail { margin-top: 0.4rem; }
 
 
     /* =================================================================
@@ -853,20 +854,22 @@
           <div class="proj-body">
             <!-- 💡 Edit category, title, description, tags, and links -->
             <span class="featured-label"><i class="fas fa-star"></i> Featured Project</span>
-            <p class="proj-category">Simulation · Deployment · LLM Integration</p>
+            <p class="proj-category">Simulation · Optimisation · LLM Integration</p>
             <h3 class="proj-title">F1 Qualifying Simulator</h3>
             <p class="proj-desc">
-              Monte Carlo simulation engine producing a full driver position probability matrix
-              and probabilistically optimised qualifying results. Deployed as an interactive
-              Streamlit app with an LLM chat interface for interpreting results.
+              Monte Carlo model of F1 qualifying. Lap times are sampled from normal distributions fitted to FastF1
+  quick laps in each of Q1–Q3, producing a driver-by-position probability matrix with expected positions
+  and variance. The most likely grid is found by framing assignment as a linear sum assignment problem,
+  solved with the Hungarian algorithm. Deployed on Streamlit with a Gemini chat interface for interpreting results.
             </p>
             <div class="proj-footer">
               <div class="proj-tags">
                 <span class="proj-tag">Python</span>
-                <span class="proj-tag">Monte Carlo</span>
-                <span class="proj-tag">Streamlit</span>
-                <span class="proj-tag">LLM</span>
-                <span class="proj-tag">Deployment</span>
+<span class="proj-tag">Monte Carlo</span>
+<span class="proj-tag">SciPy</span>
+<span class="proj-tag">FastF1</span>
+<span class="proj-tag">Streamlit</span>
+<span class="proj-tag">LLM</span>
               </div>
               <div class="proj-links">
                 <!-- 💡 Replace # with your repo URL -->
@@ -884,6 +887,35 @@
             </div>
           </div>
         </div><!-- end F1 project -->
+
+        <!-- ── PROJECT 2: MSc DISSERTATION ── -->
+<div class="proj-card reveal" style="grid-column: 1 / -1;">
+  <div class="proj-body">
+    <p class="proj-category">MSc Dissertation · Time Series · Error Analysis</p>
+    <h3 class="proj-title">Imputation Error Propagation in Time Series Forecasts</h3>
+    <p class="proj-desc">
+      A benchmarking framework on multivariate sensor data (ETTh1) that injects synthetic missingness and
+      compares five imputers (mean, LOCF, Kalman, ARIMA, BRITS) across two forecasters (Holt-Winters, XGBoost).
+      Forecast error is decomposed into bias and variance to show how imputation error propagates downstream.
+      The best reconstruction method (BRITS) was not the most stable forecasting input, and XGBoost's higher
+      bias and variance traced back to its multivariate, recursive structure.
+    </p>
+    <div class="proj-footer">
+      <div class="proj-tags">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">Time Series</span>
+        <span class="proj-tag">XGBoost</span>
+        <span class="proj-tag">Bias-Variance</span>
+        <span class="proj-tag">BRITS</span>
+      </div>
+      <div class="proj-links">
+        <a class="proj-link" href="https://github.com/stuart-n-wilson/dissertation" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
         <!-- ── PROJECT 2: AIRLINE SATISFACTION ── -->
@@ -982,36 +1014,7 @@
         </div><!-- end song clustering project -->
 
 
-        <!-- ── PROJECT 5: MSc DISSERTATION — spans full width ── -->
-        <div class="proj-card reveal" style="grid-column: 1 / -1; background: #faf8ff; border-color: #d5c8f0;">
-          <div class="proj-body" style="flex-direction: row; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem; padding: 1.5rem;">
-            <div style="flex:1; min-width:260px; display:flex; flex-direction:column; gap:0.55rem;">
-              <div style="display:flex; align-items:center; gap:0.75rem;">
-                <p class="proj-category" style="color:#6440c0;">MSc Dissertation</p>
-                <span class="ongoing-tag">In Progress · 2026</span>
-              </div>
-              <!-- 💡 Edit title and description -->
-              <h3 class="proj-title">Time Series Imputation Benchmarking</h3>
-              <p class="proj-desc">
-                A benchmarking framework analysing bias-variance trade-offs in forecasting
-                tasks arising from different imputation methods — Kalman smoothing, ARIMA,
-                and LSTM — under synthetic missingness mechanisms (MCAR, MAR, MNAR).
-              </p>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:0.75rem; min-width:180px; justify-content:flex-end;">
-              <div class="proj-tags">
-                <span class="proj-tag" style="background:#ede8ff;color:#5a3a9a;">Python</span>
-                <span class="proj-tag" style="background:#ede8ff;color:#5a3a9a;">ARIMA</span>
-                <span class="proj-tag" style="background:#ede8ff;color:#5a3a9a;">LSTM</span>
-                <span class="proj-tag" style="background:#ede8ff;color:#5a3a9a;">Kalman</span>
-              </div>
-              <!-- 💡 Replace # with your repo URL when ready -->
-              <a class="proj-link" href="#" style="border-color:#cfc0f0;color:#6440c0;width:fit-content;">
-                <i class="fab fa-github"></i> GitHub (coming soon)
-              </a>
-            </div>
-          </div>
-        </div><!-- end dissertation -->
+
 
 
       </div><!-- end projects-grid -->
@@ -1032,6 +1035,20 @@
         <h2 class="section-title">Experience</h2>
         <div class="section-rule"></div>
       </div>
+
+      <div class="exp-item reveal">
+  <p class="exp-date">Sep 2026 – Present</p>
+  <div>
+    <p class="exp-role">Decision Science Analyst</p>
+    <p class="exp-org">Lowell · Leeds</p>
+    <p class="exp-detail">
+      Developed a customer segmentation to identify customers at risk of defaulting on their first payment of a new repayment plan, cross-tabulating and overlaying multiple features alongside segment-specific features for different customer subsets.
+    </p>
+    <p class="exp-detail">
+      Share development progress with stakeholders, and clearly document analytical decisions, supporting transparency and reproducibility.
+    </p>
+  </div>
+</div>
 
       <!-- Role 1 -->
       <div class="exp-item reveal">
